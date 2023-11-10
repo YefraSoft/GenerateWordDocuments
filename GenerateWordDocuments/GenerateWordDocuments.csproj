@@ -5,6 +5,55 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\Images\LogoTSJ.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\RobotoB.ttf" />
+    <None Remove="Resources\Fonts\RobotoM.ttf" />
+    <None Remove="Resources\Fonts\RobotoR.ttf" />
+    <None Remove="Resources\Fonts\RobotoT.ttf" />
+    <None Remove="Resources\Fonts\RobotoTI.ttf" />
+    <None Remove="Resources\Images\close.png" />
+    <None Remove="Resources\Images\LogoTSJ.png" />
+    <None Remove="Resources\Images\minimize.png" />
+    <None Remove="Resources\LogoTSJ.ico" />
+    <None Remove="Resources\LogoTSJ.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ModelView\" />
+    <Folder Include="Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\RobotoB.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\RobotoM.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\RobotoR.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\RobotoT.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Fonts\RobotoTI.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\LogoTSJ.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\LogoTSJ.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\minimize.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
 
 </Project>
