@@ -1,5 +1,4 @@
-﻿using GenerateWordDocuments.View.GeneralClases;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace GenerateWordDocuments.View
+namespace GenerateWordDocuments.View.GeneralClases
 {
     /// <summary>
-    /// Lógica de interacción para LoginWindow.xaml
+    /// Lógica de interacción para DocentWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class DocentWindow : Window
     {
-        public LoginWindow()
+        public DocentWindow()
         {
             InitializeComponent();
         }
@@ -31,18 +30,7 @@ namespace GenerateWordDocuments.View
 
         private void Close(object sender, RoutedEventArgs e)
         {
-            Actions.CloseApp();
-        }
-
-        private void Login(object sender, RoutedEventArgs e)
-        {
-            AdminWindow window = new();
-            Actions.ShowWindow(this, window);
-        }
-        private void Users(object sender, MouseButtonEventArgs e)
-        {
-            DocentWindow window = new();
-            Actions.ShowWindow(this, window);
+            Actions.CloseWindow(this);
         }
     }
 }

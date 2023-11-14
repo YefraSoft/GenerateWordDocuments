@@ -14,17 +14,15 @@
     <Border Style="{StaticResource WindowBorder}">
         <StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource MinimizeStyle}" x:Name="btnMinimize" Width="25" Height="25" Margin="5"/>
-                <Button Style="{StaticResource CloseStyle}" x:Name="btnClose" Width="25" Height="25" Margin="5"/>
+                <Button Style="{StaticResource MinimizeStyle}" x:Name="btnMinimize" Width="25" Height="25" Margin="5" Click="Minimize"/>
+                <Button Style="{StaticResource CloseStyle}" x:Name="btnClose" Width="25" Height="25" Margin="5" Click="Close"/>
             </StackPanel>
             <TextBlock Style="{StaticResource TitleText}" Text="Teacher Permit System" Margin="0,0,0,10"/>
             <Image Source="\Resources\Images\LogoTSJ.png" Height="120" Margin="0,0,0,10"/>
             <TextBox x:Name="TbUser" Style="{StaticResource TextBoxStyle}" TabIndex="1" Width="250" Margin="10"/>            
             <PasswordBox Style="{StaticResource PasswordStyle}" x:Name="tbPass" TabIndex="2" Width="250" Margin="0,0,0,10"/>
-            <TextBlock x:Name="txtForgot" Style="{StaticResource TextCommonSub}" Text="Forgot Password?" HorizontalAlignment="Right" Margin="0,0,30,10"/>
-            <Button Style="{StaticResource GeneralButtonStyle}" x:Name="btnLogin" TabIndex="3" Content="Log in" Height="30" Width="200" Margin="0,20,0,0"/>
-            
-
+            <TextBlock x:Name="txtForgot" Style="{StaticResource TextCommonSub}" Text="Forgot Password?" HorizontalAlignment="Right" Margin="0,0,30,10" MouseDown="Users"/>
+            <Button Style="{StaticResource GeneralButtonStyle}" x:Name="btnLogin" TabIndex="3" Content="Log in" Height="30" Width="200" Margin="0,20,0,0" Click="Login" />
         </StackPanel>
     </Border>
 </Window>
