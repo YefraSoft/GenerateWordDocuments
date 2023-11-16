@@ -29,6 +29,16 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Text="Ascription: "/>
+                <ComboBox Width="200">
+                    <ComboBoxItem Content="Empresarial"/>
+                    <ComboBoxItem Content="Sistemas"/>
+                    <ComboBoxItem Content="Gastro"/>
+                    <ComboBoxItem Content="Civil"/>
+                    <ComboBoxItem Content="Ambiental"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Reason: "/>
                 <TextBox Style="{StaticResource TextBoxStyle}" Width="200" Background="{StaticResource White}" Height="AUTO"
                          TextWrapping="Wrap"
                          AcceptsReturn="True"/>

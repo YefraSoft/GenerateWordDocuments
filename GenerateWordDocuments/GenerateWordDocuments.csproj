@@ -22,8 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ModelView\" />
-    <Folder Include="Model\" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.2" />
+    <PackageReference Include="MySql.Data" Version="8.2.0" />
   </ItemGroup>
 
   <ItemGroup>

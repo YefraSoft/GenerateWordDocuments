@@ -1,4 +1,5 @@
-﻿using GenerateWordDocuments.View.GeneralClases;
+﻿using GenerateWordDocuments.ModelView;
+using GenerateWordDocuments.View.GeneralClases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,8 +37,22 @@ namespace GenerateWordDocuments.View
 
         private void Login(object sender, RoutedEventArgs e)
         {
-            AdminWindow window = new();
-            Actions.ShowWindow(this, window);
+            if (!string.IsNullOrEmpty(tbUser.Text) && !string.IsNullOrEmpty(tbPass.Password.ToString()))
+            {
+                bool? res = SqlServerController.VerifyUser(tbUser.Text, tbPass.Password.ToString());
+                if ( res == true)
+                {
+                    AdminWindow window = new();
+                    Actions.ShowWindow(this, window);
+                }
+                else
+                {
+                    MessageBox.Show("--> " + res.ToString());
+                }
+                
+            }
+
+            
         }
         private void Users(object sender, MouseButtonEventArgs e)
         {
