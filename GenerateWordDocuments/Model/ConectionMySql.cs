@@ -1,5 +1,4 @@
-﻿
-
+﻿using GenerateWordDocuments.Model.Sql;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -7,29 +6,59 @@ namespace GenerateWordDocuments.Model
 {
     static class ConectionMySql
     {
-        private static string _HOST = "Server=127.0.0.1;";
-        private static string? _USER;
-        private static string? _PASSWORD;
-        private static string _DATABASE = "Database=Documentcreator;";
-
-        public static bool? ConecctionUser(string user, string pass)
+        public static string? ConecctionUser(string user, string pass)
+        {
+            string? permision = null;
+            using MySqlConnection con = new(SqlSentences._CREATESTRINGCONECCTION(user, pass));
+            try {
+                con.Open();
+                if (con.State == ConnectionState.Open) {
+                    using MySqlCommand adapter = new(SqlSentences._GETPERMISSIONS(user), con);
+                    permision = adapter.ExecuteScalar().ToString();
+                }
+            } catch {
+            }
+            return permision;
+            
+        }
+        public static bool? CreateUser(string user, string pass)
         {
             bool? userExist = null;
-            _USER = "User=" + user + ";";
-            _PASSWORD = "Password=" + pass + ";";
-            MySqlConnection con = new(_HOST + _USER + _PASSWORD + _DATABASE);
-            try {
+            using MySqlConnection con = new(GetConectionString.DeCrypt());
+            try
+            {
                 con.Open();
                 if (con.State == ConnectionState.Open)
                 {
-                    userExist = true;
+                    using MySqlCommand cmd = new(SqlSentences._CREATEUSERQUERRY(user, pass), con);
+                    var result = cmd.ExecuteNonQuery();
+                    if (result != 0)
+                    {
+                        userExist = true;
+                    }
                 }
-                
-            } catch {
+            }
+            catch
+            {
                 userExist = false;
             }
             return userExist;
+        }
+        public static DataSet GetUsers(DataSet dataSet)
+        {
             
+            using MySqlConnection con = new(GetConectionString.DeCrypt());
+            try
+            {
+                con.Open();
+                using MySqlDataAdapter adapter = new(SqlSentences._GETUSERSADMIN(), con);
+                adapter.Fill(dataSet);
+            }
+            catch
+            {
+
+            }
+            return dataSet;
         }
     }
 }

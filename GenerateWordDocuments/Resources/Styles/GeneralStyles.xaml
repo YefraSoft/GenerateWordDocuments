@@ -6,7 +6,7 @@
     <SolidColorBrush x:Key="BlueTsjTransBrush" Color="#311d96" Opacity=".9"/>
     <Color x:Key="ShadowColor">#7F7F7F</Color>
     <Color x:Key="ShadowColorWhite">#CCCCCC</Color>
-    <Brush x:Key="TextColorBlack">#4B4B4B</Brush>
+    <Brush x:Key="TextColorBlack">#8C8C8C</Brush>
     <Brush x:Key="TextHolder">#CCCCCC</Brush>
     <Brush x:Key="PurpleLith">#6e00ff</Brush>
     <Brush x:Key="White">#FFFFFB</Brush>
@@ -16,6 +16,15 @@
     <FontFamily x:Key="RobotoR">..\Fonts\RobotoR.ttf#Roboto</FontFamily>
     <FontFamily x:Key="RobotoT">..\Fonts\RobotoT.ttf#Roboto</FontFamily>
     <FontFamily x:Key="RobotoTI">..\Fonts\RobotoTI.ttf#Roboto</FontFamily>
+
+    <ImageSource x:Key="errorIcon">\Resources\Images\ErrorMessageBoxIcon.png</ImageSource>
+    <ImageSource x:Key="error">\Resources\Images\ErrorMessageBox.png</ImageSource>
+    <ImageSource x:Key="inform">\Resources\Images\InformMessageBox.png</ImageSource>
+    <ImageSource x:Key="informIcon">\Resources\Images\InformMessageBoxIcon.png</ImageSource>
+    <ImageSource x:Key="goodIcon">\Resources\Images\ChekMessageBoxIcon.png</ImageSource>
+    <ImageSource x:Key="good">\Resources\Images\ChekMessageBox.png</ImageSource>
+
+
 
     <!-- CONTROL STYLES -->
     
@@ -44,14 +53,14 @@
     </Style>
     <DataTemplate x:Key="RegistersDates">
         <Border BorderThickness="0" Background="LightGray" Padding="10">
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="12" Text="Appointment date: " VerticalAlignment="Center" />
-                    <TextBlock FontSize="16" Foreground="SlateGray" Text="{Binding _appointmentdate}" VerticalAlignment="Center" FontFamily="{StaticResource RobotoT}"/>
+                    <TextBlock FontSize="14" Text="User: " FontFamily="{StaticResource RobotoR}"/>
+                    <TextBlock FontSize="14" Foreground="SlateGray" Text="{Binding _user}" FontFamily="{StaticResource RobotoTI}"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="12" Text="Date of attention: " VerticalAlignment="Center" />
-                    <TextBlock FontSize="16" Foreground="SlateGray" Text="{Binding _dateofattention}" VerticalAlignment="Center" FontFamily="{StaticResource RobotoT}"/>
+                <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+                    <TextBlock FontSize="14" Text="Password: " FontFamily="{StaticResource RobotoR}"/>
+                    <TextBlock FontSize="14" Foreground="SlateGray" Text="{Binding _pass}" FontFamily="{StaticResource RobotoTI}"/>
                 </StackPanel>
             </StackPanel>
         </Border>

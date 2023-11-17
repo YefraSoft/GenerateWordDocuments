@@ -19,6 +19,9 @@ namespace GenerateWordDocuments.View.GeneralClases
     /// </summary>
     public partial class DocentWindow : Window
     {
+
+        //USER: 20164 20161
+        //PASS: TecMM Richy
         public DocentWindow()
         {
             InitializeComponent();

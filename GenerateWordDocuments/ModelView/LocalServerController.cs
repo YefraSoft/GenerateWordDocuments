@@ -1,17 +1,34 @@
 ﻿using GenerateWordDocuments.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 
 namespace GenerateWordDocuments.ModelView
 {
-    static class SqlServerController
+    static class ServersController
     {
-        public static bool? VerifyUser(string user, string pass)
+        public static int VerifyUser(string user, string pass)
         {
-            return ConectionMySql.ConecctionUser(user, pass);
+            var res = ConectionMySql.ConecctionUser(user, pass);
+            int permission = 0;
+            if (!string.IsNullOrEmpty(res)) {
+                if (res.Length < 300)
+                {
+                    permission = 2;
+                }
+                else
+                {
+                    permission = 1;
+                }
+            }
+            return permission;
+        }
+        public static bool? CreateUser(string user, string pass)
+        {
+            return ConectionMySql.CreateUser(user, pass);
+        }
+        public static DataSet GetUsersAdmin()
+        {
+            DataSet data = new();
+            return ConectionMySql.GetUsers(data);
         }
     }
 }

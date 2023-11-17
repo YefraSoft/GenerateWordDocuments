@@ -14,12 +14,17 @@
     <Border Style="{StaticResource AdminBorder}">
         <StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource MinimizeStyle}" x:Name="btnMinimize" Width="25" Height="25" Margin="5" Click="Minimize"/>
-                <Button Style="{StaticResource CloseStyle}" x:Name="btnClose" Width="25" Height="25" Margin="5" Click="Close" />
+                <Button Style="{StaticResource MinimizeStyle}" x:Name="btnMinimize" 
+                        Width="25" Height="25" Margin="5" Click="Minimize"/>
+                <Button Style="{StaticResource CloseStyle}" x:Name="btnClose" 
+                        Width="25" Height="25" Margin="5" Click="Close" />
             </StackPanel>
-            <TextBlock Style="{StaticResource TitleText}" Text="Teacher Permit System" FontSize="20"/>
-            <DataGrid x:Name="dtGrid" IsReadOnly="True" Style="{StaticResource DataGrids}" ColumnHeaderStyle="{StaticResource DataGridColums}" 
-                      AutoGenerateColumns="False" Margin="10" Height="AUTO">
+            <TextBlock Style="{StaticResource TitleText}" Text="Teacher Permit System" 
+                       FontSize="20"/>
+            <DataGrid x:Name="dtGrid" IsReadOnly="True" Style="{StaticResource DataGrids}" 
+                      ColumnHeaderStyle="{StaticResource DataGridColums}" 
+                      AutoGenerateColumns="False" Margin="10" MaxHeight="290"
+                      RowDetailsTemplate="{StaticResource RegistersDates}">
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
                         <Setter Property="BorderBrush" Value="{StaticResource PurpleLith}"/>
@@ -28,27 +33,33 @@
                     </Style>
                 </DataGrid.RowStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Employe Code" Binding="{Binding _id}" Width="*"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding _Name}" Width="*" />
-                    <DataGridTextColumn Header="Father Last" Binding="{Binding _lastName}" Width="*" />
-                    <DataGridTextColumn Header="Mother Last" Binding="{Binding _firstName}" Width="*" />
-                    <DataGridTextColumn Header="User" Binding="{Binding _user}" Width="*"/>
-                    <DataGridTextColumn Header="Password" Binding="{Binding _password}" Width="*"/>
-                    <DataGridTextColumn Header="Gerder" Binding="{Binding _gender}" Width="*"/>
+                    <DataGridTextColumn Header="Employe Code" Binding="{Binding _teacherCode}" Width="*"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding _name}" Width="*" />
+                    <DataGridTextColumn Header="Paternal Surname" Binding="{Binding _paternalSurname}" Width="*" />
+                    <DataGridTextColumn Header="Maternal Surname" Binding="{Binding _maternalSurname}" Width="*" />
+                    <DataGridTextColumn Header="Matter" Binding="{Binding _matter}" Width="*" />
                 </DataGrid.Columns>
             </DataGrid>
+            
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  Width="*"/>
                     <ColumnDefinition  Width="*"/>
                     <ColumnDefinition  Width="*"/>
+                    <ColumnDefinition  Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="0" HorizontalAlignment="Left" Width="200" 
-                        Height="30" Margin="5" Content="Generate Report"/>
-                <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="1" HorizontalAlignment="Center" Width="200"
+                <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="0" 
+                        HorizontalAlignment="Left" Width="150" 
+                        Height="30" Margin="5" Content="Add New User"/>
+                <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="1" 
+                        HorizontalAlignment="Center" Width="150"
                         Height="30" Margin="5" Content="Add new Teacher"/>
-                <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="2" HorizontalAlignment="Right" Width="200"
+                <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="2" 
+                        HorizontalAlignment="Right" Width="150"
                         Height="30" Margin="5" Content="Edit Techer"/>
+                <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="3" 
+                        HorizontalAlignment="Right" Width="150" 
+                        Height="30" Margin="5" Content="Generate Report"/>
             </Grid>
         </StackPanel>
     </Border>

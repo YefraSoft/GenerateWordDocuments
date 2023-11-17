@@ -10,14 +10,14 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
-        Height="500" Width="350">
+        Height="500" Width="300">
     <Border Style="{StaticResource AdminBorder}">
         <StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Style="{StaticResource MinimizeStyle}" x:Name="btnMinimize" Width="25" Height="25" Margin="5" Click="Minimize"/>
                 <Button Style="{StaticResource CloseStyle}" x:Name="btnClose" Width="25" Height="25" Margin="5" Click="Close" />
             </StackPanel>
-            <TextBlock Style="{StaticResource TitleText}" Text="Teacher Permit System" FontSize="20"/>
+            <TextBlock Style="{StaticResource TitleText}" Text="Generate incident template" FontSize="20"/>
             <TextBlock Text="Date:" HorizontalAlignment="Right"/>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Text="Name of teacher: "/>
@@ -43,7 +43,7 @@
                          TextWrapping="Wrap"
                          AcceptsReturn="True"/>
             </StackPanel>
-            <Grid Margin="5">
+            <Grid Margin="5,10,5,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -52,12 +52,12 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <CheckBox Grid.Column="0" Content="Early departure"/>
-                <CheckBox Grid.Column="1" Content="time delay"/>
-                <CheckBox Grid.Column="1" Grid.Row="1" Content="input omission"/>
-                <CheckBox Grid.Column="0" Grid.Row="1" Content="output omission"/>
+                <CheckBox Grid.Column="0" Content="Early departure" Margin="5"/>
+                <CheckBox Grid.Column="1" Content="time delay" Margin="5"/>
+                <CheckBox Grid.Column="1" Grid.Row="1" Content="input omission" Margin="5"/>
+                <CheckBox Grid.Column="0" Grid.Row="1" Content="output omission" Margin="5"/>
             </Grid>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="5,0,5,15">
                 <TextBlock Text="The Day: "/>
                 <ComboBox>
                     <ComboBoxItem Content="1"/>
