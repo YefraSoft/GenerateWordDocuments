@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GenerateWordDocuments.Resources.CustomControls"
         mc:Ignorable="d"
         Height="250" Width="400"
         WindowStyle="None"
@@ -28,8 +27,8 @@
                 <Image x:Name="icon" Grid.Column="0" HorizontalAlignment="Left"/>
             </Grid>
             <Image x:Name="backgraund" MaxHeight="80"/>
-            <TextBlock x:Name="Title" Style="{StaticResource TitleText}" Text="lorem"/>
-            <TextBlock x:Name="Content" Style="{StaticResource TextCommon}" Text="lorem" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="TitleWin" Style="{StaticResource TitleText}" Text="lorem"/>
+            <TextBlock x:Name="ContentWin" Style="{StaticResource TextCommon}" Text="lorem" HorizontalAlignment="Center"/>
             <Grid HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

@@ -27,6 +27,10 @@ namespace GenerateWordDocuments.Model.Sql
             return "CALL GetDatesOfTeachers;";
         }
 
+        public static string _GETTEACHERVALUES(string _employecode)
+        {
+            return "SELECT * FROM documentcreator.teachers WHERE documentcreator.teachers._teacherCode = " + _employecode + ";";
+        }
         public static string _CREATESTRINGCONECCTION(string user, string pass)
         {
             _USER = "User=" + user + ";";

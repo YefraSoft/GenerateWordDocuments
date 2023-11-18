@@ -18,6 +18,7 @@
     <None Remove="Resources\Images\ChekMessageBox.png" />
     <None Remove="Resources\Images\ChekMessageBoxIcon.png" />
     <None Remove="Resources\Images\close.png" />
+    <None Remove="Resources\Images\documento.png" />
     <None Remove="Resources\Images\ErrorMessageBox.png" />
     <None Remove="Resources\Images\ErrorMessageBoxIcon.png" />
     <None Remove="Resources\Images\InformMessageBox.png" />
@@ -26,6 +27,12 @@
     <None Remove="Resources\Images\minimize.png" />
     <None Remove="Resources\LogoTSJ.ico" />
     <None Remove="Resources\LogoTSJ.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\documento.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

@@ -63,20 +63,22 @@ namespace GenerateWordDocuments.View
                         Actions.ShowWindowDialog(this, messageBox);
                         break;
                     case 1:
+                        tbUser.Text = string.Empty;
+                        tbPass.Password = string.Empty;
                         AdminWindow admin = new();
                         Actions.ShowWindow(this, admin);
                         break; 
                     case 2:
+                        tbUser.Text = string.Empty;
+                        tbPass.Password = string.Empty;
                         DocentWindow teacher = new();
-                        Actions.ShowWindow(this, teacher);
+                        Actions.ShowWindow(this, teacher);              
                         break;
                     default:
                         messageBox = new("Error", "LOGIN", "error");
                         Actions.ShowWindowDialog(this, messageBox);
                         break;
                 }
-                tbUser.Text = string.Empty;
-                tbPass.Password = string.Empty;
             }
             else
             {

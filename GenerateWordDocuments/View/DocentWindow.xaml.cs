@@ -30,7 +30,6 @@ namespace GenerateWordDocuments.View.GeneralClases
         {
             Actions.MinimizeWindow(this);
         }
-
         private void Close(object sender, RoutedEventArgs e)
         {
             Actions.CloseWindow(this);

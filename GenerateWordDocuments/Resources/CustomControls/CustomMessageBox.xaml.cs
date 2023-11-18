@@ -30,20 +30,20 @@ namespace GenerateWordDocuments.Resources.CustomControls
                 icon.Source = (ImageSource) FindResource("goodIcon");
                 backgraund.Source = (ImageSource)FindResource("good");
             }
-            Title.Text = title;
-            Content.Text = content;
+            TitleWin.Text = title;
+            ContentWin.Text = content;
         }
         public CustomMessageBox(string content, string title)
         {
             InitializeComponent();
-            Title.Text = title;
-            Content.Text = content;
+            TitleWin.Text = title;
+            ContentWin.Text = content;
         }
         public CustomMessageBox(string content)
         {
             InitializeComponent();
-            Title.Text = "Message";
-            Content.Text = content;
+            TitleWin.Text = "Message";
+            ContentWin.Text = content;
         }
 
         private void Minimize(object sender, RoutedEventArgs e)
