@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GenerateWordDocuments.View"
+        xmlns:local="clr-namespace:GenerateWordDocuments.View" 
+        xmlns:modelview="clr-namespace:GenerateWordDocuments.ModelView" 
+        d:DataContext="{d:DesignInstance Type=modelview:Notify}"
         mc:Ignorable="d"
         Height="450" Width="800"
         WindowStyle="None"
@@ -46,18 +48,14 @@
                     <ColumnDefinition  Width="*"/>
                     <ColumnDefinition  Width="*"/>
                     <ColumnDefinition  Width="*"/>
-                    <ColumnDefinition  Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="0" 
-                        HorizontalAlignment="Left" Width="150" 
-                        Height="30" Margin="5" Content="Add New User"/>
-                <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="1" 
                         HorizontalAlignment="Center" Width="150"
-                        Height="30" Margin="5" Content="Add new Teacher"/>
-                <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="2" 
+                        Height="30" Margin="5" Content="Add new Teacher" Click="AddTeacher"/>
+                <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="1" 
                         HorizontalAlignment="Right" Width="150"
                         Height="30" Margin="5" Content="Edit Techer"/>
-                <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="3" 
+                <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="2" 
                         HorizontalAlignment="Right" Width="150" 
                         Height="30" Margin="5" Content="Generate Report"/>
             </Grid>

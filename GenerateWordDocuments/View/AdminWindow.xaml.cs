@@ -23,5 +23,9 @@ namespace GenerateWordDocuments.View
             Actions.CloseWindow(this);
         }
 
+        private void AddTeacher(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

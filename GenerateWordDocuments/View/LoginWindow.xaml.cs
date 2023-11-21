@@ -55,6 +55,8 @@ namespace GenerateWordDocuments.View
         {
             if (!string.IsNullOrEmpty(tbUser.Text) && !string.IsNullOrEmpty(tbPass.Password.ToString()) && tbUser.Text != "USER" && tbPass.Password.ToString() != "akg")
             {
+                messageBox = new(tbPass.Password.ToString(), "LOGIN", "info");
+                Actions.ShowWindowDialog(this, messageBox);
                 int res = ServersController.VerifyUser(tbUser.Text, tbPass.Password.ToString());
                 switch (res)
                 {
@@ -65,14 +67,14 @@ namespace GenerateWordDocuments.View
                     case 1:
                         tbUser.Text = string.Empty;
                         tbPass.Password = string.Empty;
-                        AdminWindow admin = new();
+                        Welcome admin = new();
                         Actions.ShowWindow(this, admin);
                         break; 
                     case 2:
                         tbUser.Text = string.Empty;
                         tbPass.Password = string.Empty;
                         DocentWindow teacher = new();
-                        Actions.ShowWindow(this, teacher);              
+                        Actions.ShowWindow(this, teacher);
                         break;
                     default:
                         messageBox = new("Error", "LOGIN", "error");
