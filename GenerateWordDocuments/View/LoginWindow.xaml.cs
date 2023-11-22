@@ -55,8 +55,6 @@ namespace GenerateWordDocuments.View
         {
             if (!string.IsNullOrEmpty(tbUser.Text) && !string.IsNullOrEmpty(tbPass.Password.ToString()) && tbUser.Text != "USER" && tbPass.Password.ToString() != "akg")
             {
-                messageBox = new(tbPass.Password.ToString(), "LOGIN", "info");
-                Actions.ShowWindowDialog(this, messageBox);
                 int res = ServersController.VerifyUser(tbUser.Text, tbPass.Password.ToString());
                 switch (res)
                 {
@@ -65,12 +63,14 @@ namespace GenerateWordDocuments.View
                         Actions.ShowWindowDialog(this, messageBox);
                         break;
                     case 1:
+                        /* LOGIN IS ADMIN */
                         tbUser.Text = string.Empty;
                         tbPass.Password = string.Empty;
                         Welcome admin = new();
                         Actions.ShowWindow(this, admin);
                         break; 
                     case 2:
+                        /* LOGIN IS TEACHER */
                         tbUser.Text = string.Empty;
                         tbPass.Password = string.Empty;
                         DocentWindow teacher = new();
@@ -90,9 +90,11 @@ namespace GenerateWordDocuments.View
 
 
         }
-        private void Users(object sender, MouseButtonEventArgs e)
+
+        /* REMEMBER PASS */
+        private void RecoverPass(object sender, MouseButtonEventArgs e)
         {
-            DocentWindow window = new();
+            DocentAdministration window = new(1);
             Actions.ShowWindow(this, window);
         }
     }

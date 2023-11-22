@@ -47,10 +47,25 @@ namespace GenerateWordDocuments.View.GeneralClases
                         tb.Foreground = dark;
                         tb.Text = "PASSWORD";
                     }
-                    else
+                    else if(tb.Name == "user")
                     {
                         tb.Foreground = dark;
-                        tb.Text = "Mother last Name";
+                        tb.Text = "New user";
+                    }
+                    else if (tb.Name == "pass")
+                    {
+                        tb.Foreground = dark;
+                        tb.Text = "New password";
+                    }
+                    else if (tb.Name == "passC")
+                    {
+                        tb.Foreground = dark;
+                        tb.Text = "Confirm password";
+                    }
+                    else if (tb.Name == "code")
+                    {
+                        tb.Foreground = dark;
+                        tb.Text = "Employee code";
                     }
                 }
             }
@@ -68,6 +83,11 @@ namespace GenerateWordDocuments.View.GeneralClases
             if (sender is TextBox tb)
             {
                 if (tb.Text == "USER" || tb.Text == "PASSWORD" || tb.Text == "Mother last Name")
+                {
+                    tb.Foreground = clear;
+                    tb.Text = string.Empty;
+                }
+                else if(tb.Text == "New user"|| tb.Text == "New password" || tb.Text == "Confirm password" || tb.Text == "Employee code")
                 {
                     tb.Foreground = clear;
                     tb.Text = string.Empty;

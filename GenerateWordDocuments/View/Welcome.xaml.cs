@@ -40,12 +40,14 @@ namespace GenerateWordDocuments.View
 
         private void ViewRepors(object sender, RoutedEventArgs e)
         {
-
+            //AdminWindow admin = new();
+            //Actions.ShowWindow(this, admin);
         }
 
         private void GenerateReport(object sender, RoutedEventArgs e)
         {
-
+            DocentWindow admin = new();
+            Actions.ShowWindow(this, admin);
         }
 
         private void AdminTeachers(object sender, RoutedEventArgs e)

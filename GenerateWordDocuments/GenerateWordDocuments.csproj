@@ -91,4 +91,8 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Releses\" />
+  </ItemGroup>
+
 </Project>

@@ -26,13 +26,42 @@ namespace GenerateWordDocuments.View.GeneralClases
         {
             InitializeComponent();
         }
+        /* UTILITIES */
         private void Minimize(object sender, RoutedEventArgs e)
         {
             Actions.MinimizeWindow(this);
         }
+
+        private void MoveWindow(object sender, MouseButtonEventArgs e)
+        {
+            Actions.UnlockWindow(this, e);
+        }
+
         private void Close(object sender, RoutedEventArgs e)
         {
             Actions.CloseWindow(this);
+        }
+
+        private void PressEnter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Safe(sender, e);
+            }
+        }
+        private void Place(object sender, RoutedEventArgs e)
+        {
+            Actions.Place(sender);
+        }
+        private void Holder(object sender, RoutedEventArgs e)
+        {
+            Actions.Holder(sender);
+        }
+
+        private void Safe(object sender, RoutedEventArgs e)
+        {
+            DocentAdministration Pass = new(2);
+            Actions.ShowWindow(this, Pass);
         }
     }
 }

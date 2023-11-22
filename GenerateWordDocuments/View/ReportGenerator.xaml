@@ -106,7 +106,7 @@
                     <ComboBoxItem Content="2023"/>
                 </ComboBox>
             </StackPanel>
-            <Button Width="200" Height="30" Style="{StaticResource GeneralButtonStyle}" Margin="10" Content="CREATE DOCUMENT"/>
+            <Button Width="200" Height="30" Style="{StaticResource GeneralButtonStyle}" Margin="10" Content="CREATE DOCUMENT" Click="Safe"/>
         </StackPanel>
     </Border>
 </Window>
