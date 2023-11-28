@@ -1,21 +1,19 @@
 ﻿using GenerateWordDocuments.Model;
 using GenerateWordDocuments.ModelView;
+using GenerateWordDocuments.Resources.CustomControls;
 using System;
 using System.Data;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace GenerateWordDocuments.View.GeneralClases
 {
-    /// <summary>
-    /// Lógica de interacción para DocentWindow.xaml
-    /// </summary>
     public partial class DocentWindow : Window
     {
+        CustomMessageBox? messageBox;
         int reazon = 0;
-        //USER: 20164 20161
-        //PASS: TecMM Richy
         public DocentWindow()
         {
             InitializeComponent();
@@ -54,11 +52,19 @@ namespace GenerateWordDocuments.View.GeneralClases
 
         private void Safe(object sender, RoutedEventArgs e)
         {
-            DateTime date = new();
-            date.AddDays(int.Parse(day.Text));
-            date.AddMonths(int.Parse(month.Text));
-            date.AddYears(DateTime.Now.Year);
-            DocumentGenerator.Document(date, tbName.Text, code.Text, matter.Text, reazon, reaz.Text);
+            if (earlydep.IsChecked == false && deleyTime.IsChecked == false && imput.IsChecked == false && outp.IsChecked == false || string.IsNullOrEmpty(day.Text) || string.IsNullOrEmpty(month.Text))
+            {
+                messageBox = new("Fill all fields", "Generate incident template", "info");
+                Actions.ShowWindowDialog(this, messageBox);
+            }
+            else
+            {
+                DateTime date = new(DateTime.Now.Year, int.Parse(month.Text), int.Parse(day.Text));
+                Application.Current.Dispatcher.BeginInvoke(() => { DocumentGenerator.Document(date, tbName.Text, code.Text, matter.Text, reazon, reaz.Text); });
+                messageBox = new("Prossesing...", "Generate incident template", "good");
+                Actions.ShowWindowDialog(this, messageBox);
+            }
+            
         }
 
         private void Checked(object sender, RoutedEventArgs e)
@@ -68,18 +74,30 @@ namespace GenerateWordDocuments.View.GeneralClases
                 if (ck.Name == "earlydep")
                 {
                     reazon = 1;
+                    deleyTime.IsChecked = false;
+                    imput.IsChecked = false;
+                    outp.IsChecked = false;
                 }
                 else if (ck.Name == "deleyTime")
                 {
                     reazon = 2;
+                    earlydep.IsChecked = false;
+                    imput.IsChecked = false;
+                    outp.IsChecked = false;
                 }
                 else if (ck.Name == "imput")
                 {
                     reazon = 3;
+                    deleyTime.IsChecked = false;
+                    earlydep.IsChecked = false;
+                    outp.IsChecked = false;
                 }
                 else if (ck.Name == "outp")
                 {
                     reazon = 4;
+                    deleyTime.IsChecked = false;
+                    imput.IsChecked = false;
+                    earlydep.IsChecked = false;
                 }
             }
         }
@@ -91,6 +109,7 @@ namespace GenerateWordDocuments.View.GeneralClases
             code.DataContext = ds.CreateDataReader();
             matter.DataContext = ds.CreateDataReader();
             year.Text += DateTime.Now.Year.ToString();
+            dateNow.Text += (" Year: " + DateTime.Now.Year.ToString() + " Month: " + DateTime.Now.Month.ToString() + " Day: " + DateTime.Now.Day.ToString());
             for (int i = 1; i <= 31; i++)
             {
                 if (i <= 12)

@@ -31,7 +31,7 @@
 
             <TextBlock Style="{StaticResource TitleText}" Text="Generate incident template" FontSize="20"/>
             <TextBlock Style="{StaticResource TextCommon}" Foreground="{StaticResource BlueTsjBrush}" 
-                       Text="Date:" HorizontalAlignment="Right" Margin="10 0 10 0"/>
+                       HorizontalAlignment="Right" Margin="10 0 10 0" x:Name="dateNow"/>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Style="{StaticResource TextCommon}" Foreground="{StaticResource BlueTsjBrush}" 
                            Text="Name of teacher: " VerticalAlignment="Center"/>
@@ -91,15 +91,16 @@
             </Grid>
             <StackPanel Orientation="Horizontal" Margin="20,0,5,15" >
                 <TextBlock Style="{StaticResource TextCommon}" Foreground="{StaticResource BlueTsjBrush}" 
-                           Text="The Day: " FontFamily="{StaticResource RobotoT}"/>
+                           Text="The Day:  " FontFamily="{StaticResource RobotoT}"/>
                 <ComboBox  x:Name="day" Width="50"/>
                 <TextBlock Style="{StaticResource TextCommon}" Foreground="{StaticResource BlueTsjBrush}" 
-                           Text="of: " FontFamily="{StaticResource RobotoT}" />
+                           Text="  of:  " FontFamily="{StaticResource RobotoT}" />
                 <ComboBox  x:Name="month" Width="50"/>
                 <TextBlock Style="{StaticResource TextCommon}" Foreground="{StaticResource BlueTsjBrush}" 
-                           Text="The Year: " FontFamily="{StaticResource RobotoT}" x:Name="year"/>
+                           Text="  The Year:  " FontFamily="{StaticResource RobotoT}" x:Name="year"/>
             </StackPanel>
-            <Button Width="200" Height="30" Style="{StaticResource GeneralButtonStyle}" Margin="10" Content="CREATE DOCUMENT" Click="Safe"/>
+            <Button Width="200" Height="30" Style="{StaticResource GeneralButtonStyle}" Margin="10" 
+                    Content="CREATE DOCUMENT" Click="Safe" x:Name="safes"/>
         </StackPanel>
     </Border>
 </Window>

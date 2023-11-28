@@ -40,7 +40,7 @@ namespace GenerateWordDocuments.Model
                 wrdSelection.Font.Name = "Arial";
                 wrdSelection.Font.Size = 12;
                 wrdSelection.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
-                wrdSelection.TypeText("Dia: " + DateTime.Now.Day + " Mes: " + DateTime.Now.Month + " Ano: " + DateTime.Now.Year + "\n");
+                wrdSelection.TypeText("\nDia: " + DateTime.Now.Day + " Mes: " + DateTime.Now.Month + " Año: " + DateTime.Now.Year + "\n");
                 wrdSelection.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft;
                 wrdSelection.TypeText("NOMBRE DEL RESPONSABLE DE RECURSOS HUMANOS DE LA UNIDAD\n");
 
@@ -107,7 +107,7 @@ namespace GenerateWordDocuments.Model
                         break;
                 }
                 wrdSelection.Font.Size = 12;
-                wrdSelection.TypeText("Dia: " + dateIncident.Day + " Mes: " + dateIncident.Month + " Ano: " + dateIncident.Year + "\n");
+                wrdSelection.TypeText("Dia: " + dateIncident.Day + " Mes: " + dateIncident.Month + " Año: " + dateIncident.Year + "\n");
                 wrdSelection.TypeText("Motivo:\n");
 
                 //TABLE 3
@@ -125,7 +125,7 @@ namespace GenerateWordDocuments.Model
                 wrdSelection.TypeText("\nSolicitante\t\t\t\t\t\t\t\t");
                 wrdSelection.TypeText("Vo. Bo.\n");
                 wrdSelection.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
-                wrdSelection.TypeText("Jefe (a) inmediato\t\t\t\n\n");
+                wrdSelection.TypeText("Jefe (a) inmediato   \t\t\n\n");
                 wrdSelection.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphLeft;
                 wrdSelection.Font.Underline = WdUnderline.wdUnderlineSingle;
                 wrdSelection.TypeText("______" + teacherName + "______");
