@@ -24,7 +24,12 @@
     <ImageSource x:Key="goodIcon">\Resources\Images\ChekMessageBoxIcon.png</ImageSource>
     <ImageSource x:Key="good">\Resources\Images\ChekMessageBox.png</ImageSource>
 
-
+    <Storyboard x:Key="desvanecimiento">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
 
     <!-- CONTROL STYLES -->
     
@@ -340,7 +345,13 @@
                 <DropShadowEffect Color="{StaticResource ShadowColor}" Direction="315" ShadowDepth="10" BlurRadius="10" Opacity="0.5" />
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard Storyboard="{DynamicResource desvanecimiento}"/>
+            </EventTrigger>
+        </Style.Triggers>
     </Style>
+
     <!-- Admin Window -->
     <Style x:Key="AdminBorder" TargetType="Border">
         <Setter Property="Background" Value="{StaticResource White}"/>
@@ -351,6 +362,11 @@
                 <DropShadowEffect Color="{StaticResource ShadowColor}" Direction="315" ShadowDepth="10" BlurRadius="10" Opacity="0.5" />
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard Storyboard="{DynamicResource desvanecimiento}"/>
+            </EventTrigger>
+        </Style.Triggers>
     </Style>
     
     <!-- TOOLTIP -->

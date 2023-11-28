@@ -12,7 +12,7 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
-        Height="450" Width="600">
+        Height="450" Width="600" Loaded="Window_Loaded">
     <Border Style="{StaticResource AdminBorder}">
         <StackPanel>
             <Grid MaxHeight="30">
@@ -35,19 +35,28 @@
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Style="{StaticResource TextCommon}" Foreground="{StaticResource BlueTsjBrush}" 
                            Text="Name of teacher: " VerticalAlignment="Center"/>
-                <TextBox Style="{StaticResource TextBoxStyle}" Width="AUTO" MaxWidth="430"  Margin="10 0 0 0" 
-                         Background="{StaticResource White}" />
+                <TextBox x:Name="tbName" Style="{StaticResource TextBoxStyle}" Width="AUTO" MaxWidth="430"  Margin="10 0 0 0" 
+                         Background="{StaticResource White}">
+                    <TextBox.Text>
+                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                            <Binding Path="_name" Mode="OneWay"/>
+                            <Binding Path="_paternalSurname" Mode="OneWay"/>
+                            <Binding Path="_maternalSurname" Mode="OneWay"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Style="{StaticResource TextCommon}" Foreground="{StaticResource BlueTsjBrush}" 
                            Text="Code of Employee: " VerticalAlignment="Center"/>
-                <TextBox Style="{StaticResource TextBoxStyle}" Width="AUTO" MaxWidth="430" Margin="10 0 0 0" 
-                         Background="{StaticResource White}"/>
+                <TextBox x:Name="code" Style="{StaticResource TextBoxStyle}" Width="AUTO" MaxWidth="430" Margin="10 0 0 0" 
+                         Background="{StaticResource White}" Text="{Binding _teacherCode, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock Text="Ascription: " Tag="Materia" Style="{StaticResource TextCommon}" 
                            Foreground="{StaticResource BlueTsjBrush}"/>
-                <ComboBox Width="150" Margin="10 0 0 0" Style="{StaticResource ComboBoxStyle}" Cursor="" >
+                <ComboBox Width="150" Margin="10 0 0 0" Style="{StaticResource ComboBoxStyle}" 
+                          Text="{Binding _matter, Mode=OneWay}" x:Name="matter">
                     <ComboBoxItem Content="Empresarial"/>
                     <ComboBoxItem Content="Sistemas"/>
                     <ComboBoxItem Content="Gastro"/>
@@ -58,7 +67,7 @@
             <StackPanel Orientation="Horizontal" Margin="5">
                 <TextBlock VerticalAlignment="Center" Style="{StaticResource TextCommon}" 
                            Foreground="{StaticResource BlueTsjBrush}" Text="Reason: "/>
-                <TextBox Style="{StaticResource TextBoxStyle}" Width="430" Background="{StaticResource White}"
+                <TextBox x:Name="reaz" Style="{StaticResource TextBoxStyle}" Width="430" Background="{StaticResource White}"
                          TextWrapping="Wrap" Margin="10 0 0 0" Height="AUTO" MaxHeight="65"
                          AcceptsReturn="True" MaxWidth="450"/>
             </StackPanel>
@@ -72,39 +81,23 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <CheckBox Style="{StaticResource CheckBoxStyle}" Grid.Column="0" HorizontalAlignment="Center" 
-                          Content="Early departure" Margin="5"/>
+                          Content="Early departure" Margin="5" Checked="Checked" x:Name="earlydep"/>
                 <CheckBox Style="{StaticResource CheckBoxStyle}" Grid.Column="1" HorizontalAlignment="Center"
-                          Content="time delay" Margin="5"/>
+                          Content="time delay" Margin="5" Checked="Checked" x:Name="deleyTime"/>
                 <CheckBox Style="{StaticResource CheckBoxStyle}" Grid.Column="1" HorizontalAlignment="Center" 
-                          Grid.Row="1" Content="input omission" Margin="5"/>
+                          Grid.Row="1" Content="input omission" Margin="5" Checked="Checked" x:Name="imput"/>
                 <CheckBox Style="{StaticResource CheckBoxStyle}" Grid.Column="0" HorizontalAlignment="Center" 
-                          Grid.Row="1" Content="output omission" Margin="5"/>
+                          Grid.Row="1" Content="output omission" Margin="5" Checked="Checked" x:Name="outp"/>
             </Grid>
             <StackPanel Orientation="Horizontal" Margin="20,0,5,15" >
                 <TextBlock Style="{StaticResource TextCommon}" Foreground="{StaticResource BlueTsjBrush}" 
                            Text="The Day: " FontFamily="{StaticResource RobotoT}"/>
-                <ComboBox Style="{StaticResource ComboBoxStyle}">
-                    <ComboBoxItem Content="1"/>
-                    <ComboBoxItem Content="2"/>
-                    <ComboBoxItem Content="3"/>
-                    <ComboBoxItem Content="4"/>
-                    <ComboBoxItem Content="5"/>
-                </ComboBox>
+                <ComboBox  x:Name="day" Width="50"/>
                 <TextBlock Style="{StaticResource TextCommon}" Foreground="{StaticResource BlueTsjBrush}" 
                            Text="of: " FontFamily="{StaticResource RobotoT}" />
-                <ComboBox Style="{StaticResource ComboBoxStyle}">
-                    <ComboBoxItem Content="1"/>
-                    <ComboBoxItem Content="2"/>
-                    <ComboBoxItem Content="3"/>
-                    <ComboBoxItem Content="4"/>
-                    <ComboBoxItem Content="5"/>
-                </ComboBox>
+                <ComboBox  x:Name="month" Width="50"/>
                 <TextBlock Style="{StaticResource TextCommon}" Foreground="{StaticResource BlueTsjBrush}" 
-                           Text="The Year: " FontFamily="{StaticResource RobotoT}"/>
-                <ComboBox Style="{StaticResource ComboBoxStyle}">
-                    <ComboBoxItem Content="2022"/>
-                    <ComboBoxItem Content="2023"/>
-                </ComboBox>
+                           Text="The Year: " FontFamily="{StaticResource RobotoT}" x:Name="year"/>
             </StackPanel>
             <Button Width="200" Height="30" Style="{StaticResource GeneralButtonStyle}" Margin="10" Content="CREATE DOCUMENT" Click="Safe"/>
         </StackPanel>

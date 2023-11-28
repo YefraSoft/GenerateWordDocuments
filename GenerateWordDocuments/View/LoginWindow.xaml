@@ -1,4 +1,4 @@
-﻿<Window x:Class="GenerateWordDocuments.View.LoginWindow"
+﻿<Window x:Name="window" x:Class="GenerateWordDocuments.View.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -15,8 +15,8 @@
         MouseDown="MoveWindow"
         AllowsTransparency="True"
         KeyDown="PressEnter">
-    <Border Style="{StaticResource WindowBorder}">
-        <StackPanel>
+    <Border x:Name="border" Style="{DynamicResource WindowBorder}" >
+        <StackPanel x:Name="stackPanel">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Style="{StaticResource MinimizeStyle}" x:Name="btnMinimize" Width="25" Height="25" 
                         Margin="5" Click="Minimize"/>

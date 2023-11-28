@@ -36,7 +36,7 @@ namespace GenerateWordDocuments.Model.Sql
 
         public static string _GETUSERINFO(string _code)
         {
-            return "SELECT * FROM documentcreator.teachers WHERE documentcreator.teachers._teacherCode = " + _code + ";";
+            return "CALL ConsultTeacher(" + _code + ")" + ";";
         }
 
         public static string _ADDTEACHER(string _code, string _name, string _pSur, string _mSur, string _mat)

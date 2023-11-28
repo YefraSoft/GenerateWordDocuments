@@ -4,6 +4,7 @@ using GenerateWordDocuments.Resources.CustomControls;
 using GenerateWordDocuments.View.GeneralClases;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 
 namespace GenerateWordDocuments.View
 {
@@ -16,6 +17,10 @@ namespace GenerateWordDocuments.View
         public LoginWindow()
         {
             InitializeComponent();
+            //Storyboard stb = (Storyboard) FindResource("desvanecimiento");
+            //stb.Begin();
+            //stb.Stop();
+            //BeginStoryboard(stb);
         }
 
         /* UTILITIES */

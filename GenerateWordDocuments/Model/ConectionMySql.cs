@@ -66,20 +66,6 @@ namespace GenerateWordDocuments.Model
         }*/
         
         /* USER STORED PROCEDURE */
-        public static DataSet GetUser(DataSet dataSet,string _code)
-        {
-            using MySqlConnection con = new(GetConectionString.DeCrypt());
-            try
-            {
-                con.Open();
-                using MySqlDataAdapter adapter = new(SqlSentences._GETUSERINFO(_code), con);
-                adapter.Fill(dataSet);
-            }
-            catch
-            {
-            }
-            return dataSet;
-        }
         public static string RecoverPass(int code,string user,string passw)
         {
             string pass = "";
@@ -160,6 +146,20 @@ namespace GenerateWordDocuments.Model
             }
             return res;
         }
+        public static DataSet GetUser(DataSet dataSet, string _code, string user, string pass)
+        {
+            using MySqlConnection con = new(SqlSentences._CREATESTRINGCONECCTION(user, pass));
+            try
+            {
+                con.Open();
+                using MySqlDataAdapter adapter = new(SqlSentences._GETUSERINFO(_code), con);
+                adapter.Fill(dataSet);
+            }
+            catch
+            {
+            }
+            return dataSet;
+        }
 
         /* ADMIN PROCEDURES */
         public static DataSet GetUsers(DataSet dataSet)
@@ -176,21 +176,7 @@ namespace GenerateWordDocuments.Model
             }
             return dataSet;
         }
-        public static DataSet GetUser(DataSet dataSet, string _code, string user, string pass)
-        {
-            using MySqlConnection con = new(SqlSentences._CREATESTRINGCONECCTION(user, pass));
-            try
-            {
-                con.Open();
-                using MySqlDataAdapter adapter = new(SqlSentences._GETUSERINFO(_code), con);
-                adapter.Fill(dataSet);
-            }
-            catch
-            {
-            }
-            return dataSet;
-        }
-
+        
         /* CRUD ADMIN */
         public static int AddTeacher(string _code,string _name,string _pSur,string _mSur,string _mat)
         {

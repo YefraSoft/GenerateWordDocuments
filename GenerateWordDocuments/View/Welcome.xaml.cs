@@ -27,7 +27,7 @@ namespace GenerateWordDocuments.View
 
         private void Close(object sender, RoutedEventArgs e)
         {
-            Actions.CloseApp();
+            Actions.CloseWindow(this);
         }
 
         private void PressEnter(object sender, KeyEventArgs e)

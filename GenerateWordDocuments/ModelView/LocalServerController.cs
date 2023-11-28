@@ -1,7 +1,5 @@
 ﻿using GenerateWordDocuments.Model;
-using System;
 using System.Data;
-using System.Windows.Markup;
 
 namespace GenerateWordDocuments.ModelView
 {
@@ -29,16 +27,6 @@ namespace GenerateWordDocuments.ModelView
         }
 
         /* USER STORED PROCEDURE */
-        public static DataSet GetUser()
-        {
-            DataSet data = new();
-            return ConectionMySql.GetUser(data, CurrentUser._TEACHERCODE.ToString());
-        }
-        public static DataSet GetUser(string code)
-        {
-            DataSet data = new();
-            return ConectionMySql.GetUser(data, code);
-        }
         public static string GetPass(int code)
         {
             return ConectionMySql.RecoverPass(code, CurrentUser._WILDNUSER, CurrentUser._WILDPASS);
@@ -61,6 +49,11 @@ namespace GenerateWordDocuments.ModelView
             }
             return res;
         }
+        public static DataSet GetUser()
+        {
+            DataSet data = new();
+            return ConectionMySql.GetUser(data, CurrentUser._TEACHERCODE.ToString(), CurrentUser._USER, CurrentUser._PASS);
+        }
 
         /* ADMIN PROCEDURES */
         public static DataSet GetUsersAdmin()
@@ -68,13 +61,7 @@ namespace GenerateWordDocuments.ModelView
             DataSet data = new();
             return ConectionMySql.GetUsers(data);
         }
-        public static DataSet GetUser(string code,string user,string pass)
-        {
-            DataSet data = new();
-            return ConectionMySql.GetUser(data, code, user, pass);
-        }
-
-
+        
         /* CRUD ADMIN */
         public static bool AddTeacher(string _code, string _name, string _pSur, string _mSur, string _mat)
         {

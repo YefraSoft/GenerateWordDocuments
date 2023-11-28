@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GenerateWordDocuments.Model;
+using GenerateWordDocuments.ModelView;
+using System;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GenerateWordDocuments.View.GeneralClases
 {
@@ -19,7 +13,7 @@ namespace GenerateWordDocuments.View.GeneralClases
     /// </summary>
     public partial class DocentWindow : Window
     {
-
+        int reazon = 0;
         //USER: 20164 20161
         //PASS: TecMM Richy
         public DocentWindow()
@@ -60,8 +54,55 @@ namespace GenerateWordDocuments.View.GeneralClases
 
         private void Safe(object sender, RoutedEventArgs e)
         {
-            DocentAdministration Pass = new(2);
-            Actions.ShowWindow(this, Pass);
+            DateTime date = new();
+            date.AddDays(int.Parse(day.Text));
+            date.AddMonths(int.Parse(month.Text));
+            date.AddYears(DateTime.Now.Year);
+            DocumentGenerator.Document(date, tbName.Text, code.Text, matter.Text, reazon, reaz.Text);
+        }
+
+        private void Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox ck)
+            {
+                if (ck.Name == "earlydep")
+                {
+                    reazon = 1;
+                }
+                else if (ck.Name == "deleyTime")
+                {
+                    reazon = 2;
+                }
+                else if (ck.Name == "imput")
+                {
+                    reazon = 3;
+                }
+                else if (ck.Name == "outp")
+                {
+                    reazon = 4;
+                }
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataSet ds = ServersController.GetUser();
+            tbName.DataContext = ds.CreateDataReader();
+            code.DataContext = ds.CreateDataReader();
+            matter.DataContext = ds.CreateDataReader();
+            year.Text += DateTime.Now.Year.ToString();
+            for (int i = 1; i <= 31; i++)
+            {
+                if (i <= 12)
+                {
+                    day.Items.Add(i);
+                    month.Items.Add(i);
+                }
+                else
+                {
+                    day.Items.Add(i);
+                }
+            }
         }
     }
 }

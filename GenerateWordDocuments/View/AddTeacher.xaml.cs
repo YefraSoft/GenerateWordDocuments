@@ -34,7 +34,7 @@ namespace GenerateWordDocuments.View
             {
                 case 1:
                     /* MODIFY */
-                    DataSet dataSet = ServersController.GetUser(code);
+                    DataSet dataSet = ServersController.GetUser();
                     tbCode.DataContext = dataSet.CreateDataReader();
                     tbName.DataContext = dataSet.CreateDataReader();
                     tbMatSur.DataContext = dataSet.CreateDataReader();
