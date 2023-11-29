@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using System.IO;
 using Microsoft.Office.Interop.Word;
 
 namespace GenerateWordDocuments.Model
@@ -8,13 +8,14 @@ namespace GenerateWordDocuments.Model
     {
         public static bool Document(DateTime dateIncident, string teacherName,string teacherCode,string teacherMatter,int incidentType,string reazon)
         {
-            Application app = new();
+            Microsoft.Office.Interop.Word.Application app = new();
             Selection wrdSelection;
             Table table;
             _Document doc;
             Object oMissing = System.Reflection.Missing.Value;
             Object oFalse = false;
-            string imagePath = @"C:\Users\USER\Downloads\footerBanner2.jpg";
+            //string imagePath = Path.GetFullPath("Resources\\Images\\footerBanner2.jpg");
+            string imagePath = Path.GetFullPath("Resources\\Images\\footerBanner2.jpg");
             try
             {
                 app.Visible = true;

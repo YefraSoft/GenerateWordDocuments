@@ -3,7 +3,6 @@ using GenerateWordDocuments.ModelView;
 using GenerateWordDocuments.Resources.CustomControls;
 using System;
 using System.Data;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,9 +13,18 @@ namespace GenerateWordDocuments.View.GeneralClases
     {
         CustomMessageBox? messageBox;
         int reazon = 0;
+        string? _user, _pass, _code;
+        string[] reazons = { "Salida Anticipada", "Retardo", "Omisión de entrada", "Omisión de salida" };
         public DocentWindow()
         {
             InitializeComponent();
+        }
+        public DocentWindow(string user,string pass,string code)
+        {
+            InitializeComponent();
+            _user = user;
+            _pass = pass;
+            _code = code;
         }
         /* UTILITIES */
         private void Minimize(object sender, RoutedEventArgs e)
@@ -63,6 +71,11 @@ namespace GenerateWordDocuments.View.GeneralClases
                 Application.Current.Dispatcher.BeginInvoke(() => { DocumentGenerator.Document(date, tbName.Text, code.Text, matter.Text, reazon, reaz.Text); });
                 messageBox = new("Prossesing...", "Generate incident template", "good");
                 Actions.ShowWindowDialog(this, messageBox);
+                if (ServersController.SafeRegister(code.Text, reaz.Text, reazons[reazon], (DateTime.Now.Year.ToString() + "-" + month.Text + "-" + day.Text)))
+                {
+                    messageBox = new("Successfully created", "Generate incident template", "good");
+                    Actions.ShowWindowDialog(this, messageBox);
+                }
             }
             
         }
@@ -104,7 +117,15 @@ namespace GenerateWordDocuments.View.GeneralClases
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DataSet ds = ServersController.GetUser();
+            DataSet ds = new();
+            if (_code != null && _pass != null && _user != null)
+            {
+                ds = ServersController.GetUserSelected(_code, _user, _pass);
+            }
+            else
+            {
+                ds = ServersController.GetUser();
+            }
             tbName.DataContext = ds.CreateDataReader();
             code.DataContext = ds.CreateDataReader();
             matter.DataContext = ds.CreateDataReader();

@@ -9,6 +9,7 @@
         mc:Ignorable="d"
         Height="450" Width="800"
         WindowStyle="None"
+        KeyDown="PressEnter"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Background="Transparent"
@@ -26,7 +27,7 @@
             <DataGrid x:Name="dtGrid" IsReadOnly="True" Style="{StaticResource DataGrids}" 
                       ColumnHeaderStyle="{StaticResource DataGridColums}" 
                       AutoGenerateColumns="False" Margin="10" Height="290"
-                      RowDetailsTemplate="{StaticResource RegistersDates}">
+                      >
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
                         <Setter Property="BorderBrush" Value="{StaticResource PurpleLith}"/>
@@ -35,11 +36,13 @@
                     </Style>
                 </DataGrid.RowStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Employe Code" Binding="{Binding _teacherCode}" Width="*"/>
+                    <DataGridTextColumn Header="Employee Code" Binding="{Binding _teacherCode}" MinWidth="110" Width="*"/>
                     <DataGridTextColumn Header="Name" Binding="{Binding _name}" Width="*" />
-                    <DataGridTextColumn Header="Paternal Surname" Binding="{Binding _paternalSurname}" Width="*" />
-                    <DataGridTextColumn Header="Maternal Surname" Binding="{Binding _maternalSurname}" Width="*" />
+                    <DataGridTextColumn Header="Paternal Surname" Binding="{Binding _paternalSurname}" MinWidth="130" Width="*" />
+                    <DataGridTextColumn Header="Maternal Surname" Binding="{Binding _maternalSurname}" MinWidth="130" Width="*" />
                     <DataGridTextColumn Header="Matter" Binding="{Binding _matter}" Width="*" />
+                    <DataGridTextColumn Header="User" Binding="{Binding _user}" Width="*"/>
+                    <DataGridTextColumn Header="Password" Binding="{Binding _pass}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
             
@@ -60,8 +63,8 @@
                         HorizontalAlignment="Right" Width="150"
                         Height="30" Margin="5" Content="Edit Techer" Click="ModifyTeacher" Cursor="Hand"/>
                 <Button Style="{StaticResource GeneralButtonStyle}" Grid.Column="3" 
-                        HorizontalAlignment="Right" Width="150" 
-                        Height="30" Margin="5" Content="Generate Report"/>
+                        HorizontalAlignment="Right" Width="150" Click="GenerateReport"
+                        Height="30" Margin="0 0 12 0" Content="Generate Report"/>
             </Grid>
         </StackPanel>
     </Border>

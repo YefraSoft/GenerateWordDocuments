@@ -13,7 +13,7 @@
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True"
-        Height="500" Width="300">
+        Height="370" Width="270">
     <Border Style="{StaticResource AdminBorder}">
         <StackPanel>
             <Grid MaxHeight="30" Margin="0 3 0 10">
@@ -29,15 +29,13 @@
                 <Image Source="\Resources\Images\documento.png" Grid.Column="0" HorizontalAlignment="Left" 
                        Margin=" 15 0 0 0"/>
             </Grid>
-            <StackPanel Height="436">
-                <TextBlock Style="{StaticResource TitleText}" Text="WELCOME ----" Margin="0 0 0 10"/>
-                <Frame Height="250" Width="200" Background="Violet" Margin="0 0 0 10"/>
+            <StackPanel>
+                <TextBlock Style="{StaticResource TitleText}" Text="WELCOME" Margin="0 0 0 10"/>
+                <Image Height="150" Width="240" Source="\Resources\Images\footerBanner3.jpg" Margin="0 0 0 10"/>
                 <Button Style="{StaticResource GeneralButtonStyle}" Height="30" Width="200" Margin="0 0 0 10"
-                        Content="View Recient Reports" Click="ViewRepors"/>
+                        Content="View Reports" Click="ViewRepors"/>
                 <Button Style="{StaticResource GeneralButtonStyle}" Height="30" Width="200" Margin="0 0 0 10"
-                        Content="Generate Report" Click="GenerateReport"/>
-                <Button Style="{StaticResource GeneralButtonStyle}" Height="30" Width="200" Margin="0 0 0 10"
-                        Content="Admin Permits And Teahcers" Click="AdminTeachers"/>
+                        Content="Admin teahcers" Click="AdminTeachers"/>
             </StackPanel>
         </StackPanel>
         

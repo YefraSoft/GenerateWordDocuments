@@ -54,6 +54,11 @@ namespace GenerateWordDocuments.ModelView
             DataSet data = new();
             return ConectionMySql.GetUser(data, CurrentUser._TEACHERCODE.ToString(), CurrentUser._USER, CurrentUser._PASS);
         }
+        public static DataSet GetUserSelected(string code,string user,string pass)
+        {
+            DataSet data = new();
+            return ConectionMySql.GetUser(data, code, user, pass);
+        }
 
         /* ADMIN PROCEDURES */
         public static DataSet GetUsersAdmin()
@@ -61,12 +66,45 @@ namespace GenerateWordDocuments.ModelView
             DataSet data = new();
             return ConectionMySql.GetUsers(data);
         }
-        
+        public static DataSet GetReports()
+        {
+            DataSet data = new();
+            return ConectionMySql.GetReports(data);
+        }
+        public static bool SafeRegister(string _code, string _reazon, string _why, string _date)
+        {
+            bool res = false;
+            if (ConectionMySql.SafeReport(_code, _reazon, _why, _date) > 0)
+            {
+                res = true;
+            }
+            return res;
+        }
+        public static string NameTeacher(string code)
+        {
+            string name = "";
+            string? nm = ConectionMySql.GetNameTeacher(code);
+            if (nm is not null){
+                name = nm;
+            }
+            return name;
+        }
+        public static string MatterTeacher(string code)
+        {
+            string name = "";
+            string? nm = ConectionMySql.GetMatterTeacher(code);
+            if (nm is not null)
+            {
+                name = nm;
+            }
+            return name;
+        }
+
         /* CRUD ADMIN */
         public static bool AddTeacher(string _code, string _name, string _pSur, string _mSur, string _mat)
         {
             bool res = false;
-            if (ConectionMySql.AddTeacher(_code,_name,_pSur,_mSur,_mat) == 0)
+            if (ConectionMySql.AddTeacher(_code,_name,_pSur,_mSur,_mat) > 0)
             {
                 res = true;
             }

@@ -51,12 +51,26 @@ namespace GenerateWordDocuments.Model.Sql
         {
             return "CALL documentcreator.DropTeacher(" + _code + ");";
         }
-
+        public static string _CREATEINCIDENT(string _code,string _reazon,string _why,string _date)
+        {
+            return "INSERT INTO documentcreator.documentiformation (_teacherCode,_reason,_why,_Date) VALUES (" + _code + ", '" + _reazon + "', '" + _why + "', '" + _date + "');";
+        }
+        public static string _GETREPORTS()
+        {
+            return "SELECT * FROM documentcreator.documentiformation;";
+        }
         public static string _CREATELOGIN()
         {
             return "CALL documentcreator.CreateLogin();";
         }
-
+        public static string _GETNAMETEACHER(string code)
+        {
+            return "SELECT CONCAT(_name,\" \",_paternalSurname,\" \",_maternalSurname) AS nombre FROM documentcreator.teachers WHERE _teacherCode = " + code + ";";
+        }
+        public static string _GETMATTERTEACHER(string code)
+        {
+            return "SELECT _matter FROM documentcreator.teachers WHERE _teacherCode = " + code + ";";
+        }
         public static string _CREATESTRINGCONECCTION(string user, string pass)
         {
             _USER = "User=" + user + ";";

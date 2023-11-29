@@ -1,21 +1,8 @@
 ﻿using GenerateWordDocuments.ModelView;
 using GenerateWordDocuments.Resources.CustomControls;
 using GenerateWordDocuments.View.GeneralClases;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GenerateWordDocuments.View
 {
@@ -26,7 +13,7 @@ namespace GenerateWordDocuments.View
     {
         CustomMessageBox? messageBox;
         private int mode; 
-        public AddTeacher(int mode, string code)
+        public AddTeacher(int mode, string code, string user, string pass)
         {
             this.mode = mode;
             InitializeComponent();
@@ -34,7 +21,7 @@ namespace GenerateWordDocuments.View
             {
                 case 1:
                     /* MODIFY */
-                    DataSet dataSet = ServersController.GetUser();
+                    DataSet dataSet = ServersController.GetUserSelected(code, user, pass);
                     tbCode.DataContext = dataSet.CreateDataReader();
                     tbName.DataContext = dataSet.CreateDataReader();
                     tbMatSur.DataContext = dataSet.CreateDataReader();

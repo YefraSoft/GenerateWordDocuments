@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using GenerateWordDocuments.ModelView;
 using GenerateWordDocuments.Resources.CustomControls;
 using GenerateWordDocuments.View.GeneralClases;
@@ -12,6 +13,7 @@ namespace GenerateWordDocuments.View
     public partial class AdminWindow : Window
     {
         CustomMessageBox? messageBox;
+
         public AdminWindow()
         {
             InitializeComponent();
@@ -34,17 +36,43 @@ namespace GenerateWordDocuments.View
                 dtGrid.ItemsSource = ServersController.GetUsersAdmin().CreateDataReader();
             }
         }
+        private void PressEnter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F5)
+            {
+                dtGrid.ItemsSource = ServersController.GetUsersAdmin().CreateDataReader();
+            }
+        }
         private void AddTeacher(object sender, RoutedEventArgs e)
         {
-            AddTeacher create = new(2, "");
+            AddTeacher create = new(2, "","","");
             Actions.ShowWindow(this, create);
             dtGrid.ItemsSource = ServersController.GetUsersAdmin().CreateDataReader();
         }
         private void ModifyTeacher(object sender, RoutedEventArgs e)
         {
-            AddTeacher create = new(1, ((TextBlock)dtGrid.Columns[0].GetCellContent(dtGrid.Items[dtGrid.SelectedIndex])).Text) ;
-            Actions.ShowWindow(this, create);
-            dtGrid.ItemsSource = ServersController.GetUsersAdmin().CreateDataReader();
+            try {
+                string pass = ((TextBlock)dtGrid.Columns[6].GetCellContent(dtGrid.Items[dtGrid.SelectedIndex])).Text;
+                string user = ((TextBlock)dtGrid.Columns[5].GetCellContent(dtGrid.Items[dtGrid.SelectedIndex])).Text;
+                string code = ((TextBlock)dtGrid.Columns[0].GetCellContent(dtGrid.Items[dtGrid.SelectedIndex])).Text;
+                AddTeacher create = new(1, code, user, pass);
+                Actions.ShowWindow(this, create);
+                dtGrid.ItemsSource = ServersController.GetUsersAdmin().CreateDataReader();
+            } catch { }
+            
+        }
+
+        private void GenerateReport(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string pass = ((TextBlock)dtGrid.Columns[6].GetCellContent(dtGrid.Items[dtGrid.SelectedIndex])).Text;
+                string user = ((TextBlock)dtGrid.Columns[5].GetCellContent(dtGrid.Items[dtGrid.SelectedIndex])).Text;
+                string code = ((TextBlock)dtGrid.Columns[0].GetCellContent(dtGrid.Items[dtGrid.SelectedIndex])).Text;
+                DocentWindow create = new(user, pass, code);
+                Actions.ShowWindow(this, create);
+            }
+            catch { }
         }
     }
 }

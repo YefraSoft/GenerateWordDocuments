@@ -1,4 +1,5 @@
-﻿using GenerateWordDocuments.Model.Sql;
+﻿using Azure.Core;
+using GenerateWordDocuments.Model.Sql;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
@@ -176,7 +177,74 @@ namespace GenerateWordDocuments.Model
             }
             return dataSet;
         }
-        
+        public static DataSet GetReports(DataSet dataSet)
+        {
+            using MySqlConnection con = new(GetConectionString.DeCrypt());
+            try
+            {
+                con.Open();
+                using MySqlDataAdapter adapter = new(SqlSentences._GETREPORTS(), con);
+                adapter.Fill(dataSet);
+            }
+            catch
+            {
+            }
+            return dataSet;
+        }
+        public static int SafeReport(string _code, string _reazon, string _why, string _date)
+        {
+            int res = 0;
+            using MySqlConnection conn = new(GetConectionString.DeCrypt());
+            try
+            {
+                conn.Open();
+                using MySqlCommand sqlCommand = new(SqlSentences._CREATEINCIDENT(_code,_reazon,_why,_date), conn);
+                if (sqlCommand.ExecuteNonQuery() > 0)
+                {
+                    using MySqlCommand CommandLog = new(SqlSentences._CREATELOGIN(), conn);
+                    res = CommandLog.ExecuteNonQuery();
+                }
+            }
+            catch { }
+            return res;
+        }
+        public static string? GetNameTeacher(string code)
+        {
+            string? name = null;
+            using MySqlConnection con = new(GetConectionString.DeCrypt());
+            try
+            {
+                con.Open();
+                if (con.State == ConnectionState.Open)
+                {
+                    using MySqlCommand adapter = new(SqlSentences._GETNAMETEACHER(code), con);
+                    name = adapter.ExecuteScalar().ToString();
+                }
+            }
+            catch
+            {
+            }
+            return name;
+        }
+        public static string? GetMatterTeacher(string code)
+        {
+            string? name = null;
+            using MySqlConnection con = new(GetConectionString.DeCrypt());
+            try
+            {
+                con.Open();
+                if (con.State == ConnectionState.Open)
+                {
+                    using MySqlCommand adapter = new(SqlSentences._GETMATTERTEACHER(code), con);
+                    name = adapter.ExecuteScalar().ToString();
+                }
+            }
+            catch
+            {
+            }
+            return name;
+        }
+
         /* CRUD ADMIN */
         public static int AddTeacher(string _code,string _name,string _pSur,string _mSur,string _mat)
         {
@@ -188,7 +256,7 @@ namespace GenerateWordDocuments.Model
                 if(sqlCommand.ExecuteNonQuery() > 0)
                 {
                     using MySqlCommand CommandLog = new(SqlSentences._CREATELOGIN(), conn);
-                    CommandLog.ExecuteNonQuery();
+                    res = CommandLog.ExecuteNonQuery();
                 }
             }
             catch { }
